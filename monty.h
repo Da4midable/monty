@@ -45,10 +45,12 @@ typedef struct instruction_s
 } instruction_t;
 
 
+size_t stack_len(stack_t *stack);
 void pop(stack_t **stack, unsigned int line_number);
 void free_stack(stack_t *stack);
 void push(stack_t **stack, int n, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
+int swap(stack_t **stack, unsigned int line_number);
 
 #endif
