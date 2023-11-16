@@ -102,6 +102,18 @@ int main(int argc, char *argv[])
 			sub(&stack, line_number);
 		}
 
+		else if (strcmp(opcode, "div") == 0)
+		{
+			if (stack_len(stack) < 2)
+			{
+				fprintf(stderr, "L%d: can't div, stack too short\n", line_number);
+				free_stack(stack);
+				fclose(file);
+				exit(EXIT_FAILURE);
+			}
+			divvy(&stack, line_number);
+		}
+
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
