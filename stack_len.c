@@ -1,8 +1,8 @@
 #include "monty.h"
 
 /**
- * dlistint_len - counts the elements of a doubly linked list
- * @h: is the pointer to the head node
+ * stack_len - counts the elements of a doubly linked list
+ * @stack: is the pointer to the head node
  * Return: count.
  */
 

@@ -61,10 +61,17 @@ int main(int argc, char *argv[])
 			pop(&stack, line_number);
 		}
 
-		else if (strcmp(opcode, "swap") == 0)
-		{
-			swap(&stack, line_number);
-		}
+		 else if (strcmp(opcode, "swap") == 0)
+        {
+            if (stack_len(stack) < 2)
+            {
+                fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+                free_stack(stack);
+                fclose(file);
+                exit(EXIT_FAILURE);
+            }
+            swap(&stack, line_number);
+        }
 
 		else
 		{
