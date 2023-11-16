@@ -9,10 +9,9 @@
 
 int swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *current, *temp;
-	int len = stack_len(*stack);
+	stack_t *current = *stack, *temp;
 
-	if (*stack == NULL || len < 2)
+	if (current == NULL || current->next == NULL)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
