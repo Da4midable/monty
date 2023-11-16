@@ -9,8 +9,7 @@
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char *line = NULL, *opcode, *arg;
-	size_t len = 0;
+	char line[1024], *opcode, *arg;
 	unsigned int line_number = 0;
 	stack_t *stack = NULL;
 
@@ -27,7 +26,7 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while (getline(&line, &len, file) != -1)
+	while (fgets(line, sizeof(line), file) != NULL)
 	{
 		line_number++;
 
@@ -42,7 +41,6 @@ int main(int argc, char *argv[])
 			{
 				fprintf(stderr, "L%d: usage: push integer\n", line_number);
 				free_stack(stack);
-				free(line);
 				fclose(file);
 				exit(EXIT_FAILURE);
 			}
@@ -62,14 +60,12 @@ int main(int argc, char *argv[])
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
 			free_stack(stack);
-			free(line);
 			fclose(file);
 			exit(EXIT_FAILURE);
 		}
 	}
 
 	free_stack(stack);
-	free(line);
 	fclose(file);
 
 	return (EXIT_SUCCESS);
