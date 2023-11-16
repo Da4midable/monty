@@ -52,26 +52,38 @@ int main(int argc, char *argv[])
 		}
 
 		else if (strcmp(opcode, "pint") == 0)
-        {
-            pint(&stack, line_number);
-        }
+		{
+			pint(&stack, line_number);
+		}
 
 		else if (strcmp(opcode, "pop") == 0)
 		{
 			pop(&stack, line_number);
 		}
 
-		 else if (strcmp(opcode, "swap") == 0)
-        {
-            if (stack_len(stack) < 2)
-            {
-                fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-                free_stack(stack);
-                fclose(file);
-                exit(EXIT_FAILURE);
-            }
-            swap(&stack, line_number);
-        }
+		else if (strcmp(opcode, "swap") == 0)
+		{
+			if (stack_len(stack) < 2)
+			{
+				fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+				free_stack(stack);
+				fclose(file);
+				exit(EXIT_FAILURE);
+			}
+			swap(&stack, line_number);
+		}
+
+		else if (strcmp(opcode, "add") == 0)
+		{
+			if (stack_len(stack) < 2)
+			{
+				fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+				free_stack(stack);
+				fclose(file);
+				exit(EXIT_FAILURE);
+			}
+			add(&stack, line_number);
+		}
 
 		else
 		{
