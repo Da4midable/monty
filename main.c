@@ -90,6 +90,18 @@ int main(int argc, char *argv[])
 			;
 		}
 
+		else if (strcmp(opcode, "sub") == 0)
+		{
+			if (stack_len(stack) < 2)
+			{
+				fprintf(stderr, "L%d: can't sub, stack too short\n", line_number);
+				free_stack(stack);
+				fclose(file);
+				exit(EXIT_FAILURE);
+			}
+			sub(&stack, line_number);
+		}
+
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
