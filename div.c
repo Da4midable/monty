@@ -18,12 +18,14 @@ int divvy(stack_t **stack, unsigned int line_number)
 	}
 
 	temp = current->next;
-	div_int = temp->n / current->n;
 
-	if (current->n == 0)
+	if (temp->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
 	}
+
+	div_int = temp->n / current->n;
+
 	current->next = temp->next;
 
 	if (temp->next != NULL)
