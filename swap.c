@@ -1,9 +1,9 @@
 #include "monty.h"
 
 /**
- * swap - Swaps the top two elements of the stack.
- * @stack: points to the top of the stack.
- * @line_number: line number in the Monty script where the opcode appears.
+ * swap - swaps top two elements of stack.
+ * @stack: points to top of stack.
+ * @line_number: line number in the Monty script where opcode appears.
  * Return: EXIT_SUCCESS on success, EXIT_FAILURE on failure.
  */
 
