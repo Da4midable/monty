@@ -26,7 +26,7 @@ int mod(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	result = temp->n % current->next->n;
+	result = temp->n % current->n;
 	current->next = temp->next;
 
 	if (temp->next != NULL)
