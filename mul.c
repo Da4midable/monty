@@ -27,7 +27,7 @@ int mul(stack_t **stack, unsigned int line_number)
 		temp->next->prev = current;
 	}
 
-
+	free(temp);
 
 	current->n = sum;
 
