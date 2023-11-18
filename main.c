@@ -126,6 +126,18 @@ int main(int argc, char *argv[])
 			mul(&stack, line_number);
 		}
 
+		else if (strcmp(opcode, "mod") == 0)
+		{
+			if (stack_len(stack) < 2)
+			{
+				fprintf(stderr, "L%d: can't mod, stack to short\n", line_number);
+				free_stack(stack);
+				fclose(file);
+				exit(EXIT_FAILURE);
+			}
+			mod(&stack, line_number);
+		}
+
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
