@@ -114,6 +114,18 @@ int main(int argc, char *argv[])
 			divvy(&stack, line_number);
 		}
 
+		else if (strcmp(opcode, "mul") == 0)
+		{
+			if (stack_len(stack) < 2)
+			{
+				fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+				free_stack(stack);
+				fclose(file);
+				exit(EXIT_FAILURE);
+			}
+			mul(&stack, line_number);
+		}
+
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
