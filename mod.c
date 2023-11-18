@@ -1,7 +1,8 @@
 #include "monty.h"
 
 /**
- * mod - uniquely divides the top two elements of the stack.
+ * mod - computes the rest of the division of the second top element
+ *       of the stack by the top element of the stack.
  * @stack: points to the top of the stack.
  * @line_number: line number in the Monty script where opcode appears.
  * Return: EXIT_SUCCESS on success, EXIT_FAILURE on failure.
@@ -14,12 +15,11 @@ int mod(stack_t **stack, unsigned int line_number)
 
 	if (*stack == NULL || (*stack)->next == NULL)
 	{
-		fprintf(stderr, "L%d: can't mod, stack to short\n", line_number);
+		fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	temp = current->next;
-
 	if (temp->n == 0)
 	{
 		fprintf(stderr, "L%d: division by zero\n", line_number);
@@ -37,5 +37,5 @@ int mod(stack_t **stack, unsigned int line_number)
 	free(temp);
 	current->n = result;
 
-	return (EXIT_SUCCESS);
+	return(EXIT_SUCCESS);
 }
