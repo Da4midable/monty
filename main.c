@@ -158,6 +158,16 @@ int main(int argc, char *argv[])
 			pchar(&stack, line_number);
 		}
 
+		else if (strcmp(opcode, "pstr") == 0)
+		{
+			if (stack == NULL)
+			{
+				printf("\n");
+				free_stack(stack);
+				fclose(file);
+			}
+			pstr(&stack, line_number);
+		}
 
 		else
 		{
