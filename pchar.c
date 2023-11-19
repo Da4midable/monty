@@ -7,10 +7,9 @@
  * Return: convert_int.
  */
 
-char pchar(stack_t **stack, unsigned int line_number)
+void pchar(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current;
-	char convert_int;
 
 	if (*stack == NULL)
 	{
@@ -26,7 +25,5 @@ char pchar(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 
-	convert_int = printf("%c\n", current->n);
-	current = current->next;
-	return (convert_int);
+	printf("%c\n", current->n);
 }
