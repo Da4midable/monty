@@ -142,7 +142,7 @@ int main(int argc, char *argv[])
 		{
 			if (stack == NULL)
 			{
-				fprintf(stderr, "L%d: can't pchar, stack too short\n", line_number);
+				fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 				free_stack(stack);
 				fclose(file);
 				exit(EXIT_FAILURE);
