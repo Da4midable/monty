@@ -138,6 +138,19 @@ int main(int argc, char *argv[])
 			mod(&stack, line_number);
 		}
 
+		else if (strcmp(opcode, "pchar") == 0)
+		{
+			if (stack == NULL)
+			{
+				fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
+				free_stack(stack);
+				fclose(file);
+				exit(EXIT_FAILURE);
+			}
+			pchar(&stack, line_number);
+		}
+
+
 		else
 		{
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_number, opcode);
